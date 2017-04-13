@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- Shiro Filter -->
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!--登录url-->
+        <!--<property name="loginUrl" value="/logindbhsjak"/>-->
+        <!--登录成功跳转url-->
+        <property name="successUrl" value="/index"/>
+        <!--未授权url-->
+        <property name="unauthorizedUrl" value="/unauthorized"/>
+        <!--过滤规则-->
+        <property name="filterChainDefinitions">
+            <value>
+                /main/public/** = anon
+                /head* = anon
+                /login = anon
+                /doLogin = anon
+                /unauthorized = anon
+                /test/** = anon
+                <!--/api/** = roles[sale]-->
+                <!--/api/** = roles[dev:flush]-->
+                /index = authc
+                /** = authc
+                <!--/logout = logout-->
+            </value>
+        </property>
+    </bean>
+
+
+
+    <!-- 核心 securityManager定义-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!--<property name="realm" ref="shiroDbRealm"/>-->
+        <property name="realms">
+            <list>
+                <bean id="myRealm" class="shiro.ShiroDbRealm"/>
+                <!--<bean id="apiRealm" class=""/>-->
+            </list>
+        </property>
+        <!--<property name="sessionManager" ref="defaultWebSessionManager"/>-->
+    </bean>
+
+
+    <!--会话管理-->
+    <bean id="defaultWebSessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="globalSessionTimeout" value="1800000"/>
+        <!--<property name="deleteInvalidSessions" value="true"/>-->
+        <!--<property name="sessionValidationSchedulerEnabled" value="true"/>-->
+        <!--sheduler-->
+        <!--<property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>-->
+        <!--<property name="sessionDAO" ref="sessionDAO"/>-->
+        <!--<property name="sessionIdCookieEnabled" value="true"/>-->
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+    </bean>
+
+
+    <!-- 会话Cookie模板 -->
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="sid"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="180000"/>
+    </bean>
+
+    <!--默认一分钟验证session是否过期（timestamp 和 timeout）-->
+    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
+        <property name="sessionManager" ref="defaultWebSessionManager"/>
+        <property name="sessionValidationInterval" value="1800000"/>
+    </bean>
+
+
+    <!--开启shiro注解-->
+    <aop:config proxy-target-class="true"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+</beans>
