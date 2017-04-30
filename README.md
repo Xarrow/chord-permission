@@ -8,3 +8,5 @@ SpingMVC集成Shiro基本框架
 
 [+] 参考链接
 [基于SpringMVC+Shiro的系统权限开发](http://iliangqunru.com/post/2016/ji-yu-springmvc-shirode-xi-tong-quan-xian-kai-fa)
+
+[+] 20170501 修改架构

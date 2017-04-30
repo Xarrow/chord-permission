@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=gbk" language="java" %>
 <html>
 <head>
-    <title>航旅统一管控平台</title>
+    <title>平台</title>
     <c:import url="head.jsp"/>
     <style>
         li.active li:hover {
@@ -22,7 +22,7 @@
     <!-- Navigation -->
     <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><i class="fa fa-envira"></i>航旅统一管控平台</a>
+            <a class="navbar-brand" href="#"><i class="fa fa-envira"></i>平台</a>
         </div>
 
         <ul class="nav navbar-nav navbar-right">
