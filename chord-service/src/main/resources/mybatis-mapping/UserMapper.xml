@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dao.UserMapper">
-    <resultMap id="BaseResultMap" type="model.User">
+<mapper namespace="com.alibaba.chord.service.base.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.alibaba.chord.service.base.model.User">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="unique_key" property="uniqueKey" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
@@ -27,7 +27,7 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
 
-    <insert id="insert" parameterType="model.User">
+    <insert id="insert" parameterType="com.alibaba.chord.service.base.model.User">
         insert into user (id, unique_key, name,
         password, salt, add_time,
         update_time, mark)
@@ -36,7 +36,7 @@
         #{updateTime,jdbcType=TIMESTAMP}, #{mark,jdbcType=INTEGER})
     </insert>
 
-    <insert id="insertSelective" parameterType="model.User">
+    <insert id="insertSelective" parameterType="com.alibaba.chord.service.base.model.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -92,7 +92,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    <update id="updateByPrimaryKeySelective" parameterType="com.alibaba.chord.service.base.model.User">
         update user
         <set>
             <if test="uniqueKey != null">
@@ -120,7 +120,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <update id="updateByPrimaryKey" parameterType="model.User">
+    <update id="updateByPrimaryKey" parameterType="com.alibaba.chord.service.base.model.User">
         update user
         set unique_key = #{uniqueKey,jdbcType=VARCHAR},
         name = #{name,jdbcType=VARCHAR},
@@ -133,7 +133,7 @@
     </update>
 
     <select id="selectBySelective"
-            parameterType="model.User"
+            parameterType="com.alibaba.chord.service.base.model.User"
             resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

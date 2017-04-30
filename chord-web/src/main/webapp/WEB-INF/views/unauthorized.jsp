@@ -6,7 +6,7 @@
   Time: 11:31
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=gbk" language="java" %>
 <html>
 <head>
     <title>unauthorized</title>
@@ -20,8 +20,8 @@
     </style>
 </head>
 <body>
-<div class="tip">
+<h1 class="tip">
     unauthorized
-</div>
+</h1>
 </body>
 </html>

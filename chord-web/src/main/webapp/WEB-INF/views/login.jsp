@@ -6,17 +6,21 @@
   Time: 13:41
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=gbk" language="java" %>
 
 <!DOCTYPE HTML>
 <html>
 <head>
     <title>Login</title>
-    <script src="//cdn.bootcss.com/crypto-js/3.1.9/core.js"></script>
-    <script src="//cdn.bootcss.com/crypto-js/3.1.9/enc-base64.js"></script>
-    <script src="//cdn.bootcss.com/crypto-js/3.1.9/cipher-core.js"></script>
-    <script src="//cdn.bootcss.com/crypto-js/3.1.9/aes.js"></script>
-    <script src="https://cdn.bootcss.com/Base64/1.0.1/base64.min.js"></script>
+    <%--<script src="https://cdn.staticfile.org/crypto-js/3.1.9/core.js"></script>--%>
+    <%--<script src="https://cdn.staticfile.org/crypto-js/3.1.9/enc-base64.js"></script>--%>
+    <%--<script src="https://cdn.staticfile.org/crypto-js/3.1.9/hmac-sha1.js"></script>--%>
+    <%--<script src="https://cdn.staticfile.org/crypto-js/3.1.9/hmac-md5.js"></script>--%>
+
+    <%--<script src="https://cdn.staticfile.org/crypto-js/3.1.9/evpkdf.js"></script>--%>
+    <%--<script src="https://cdn.staticfile.org/crypto-js/3.1.9/cipher-core.js"></script>--%>
+    <%--<script src="https://cdn.staticfile.org/crypto-js/3.1.9/aes.js"></script>--%>
+    <%--<script src="http://apps.bdimg.com/libs/crypto-js/3.1.2/components/base64.min.js"></script>--%>
     <c:import url="head.jsp"/>
     <style>
         h1 {
@@ -39,16 +43,16 @@
 </head>
 <body>
 <div class="login-logo">
-    <h1>ç™»å½•</h1>
+    <h1>µÇÂ¼</h1>
 </div>
 <div class="app-cam">
     <form method="post" action="/doLogin">
-        <input type="text" id="userKey" name="userKey" class="text" placeholder="ç”¨æˆ·å">
-        <input type="password" id="password" name="password" placeholder="å¯†ç ">
+        <input type="text" id="userKey" name="userKey" class="text" placeholder="ÓÃ»§Ãû">
+        <input type="password" id="password" name="password" placeholder="ÃÜÂë">
 
         <input type="hidden" id="token" name="token" value="${token_test}">
         <div class="submit">
-            <input type="submit" value="æäº¤">
+            <input type="submit" value="Ìá½»">
         </div>
         <ul class="new">
             <li class="new_right"><p class="sign">New here ?<a href="register.html"> Sign Up</a></p></li>
@@ -59,31 +63,9 @@
 <div class="copy_layout login">
     <c:import url="footer.jsp"/>
 </div>
-<script>
-    $(function () {
-        function funToPwd(callback) {
-            null === $("#password").val() || '' === $("#password").val() ? $.alert({
-                    title: "æç¤º",
-                    content: "å¯†ç ä¸ä¸ºç©º"
-                }) : $("#password").val(btoa($("#token").val() + "->" + $("#password").val()));
-            return "funToPwd";
-        }
-
-        $("input[name='password']").on("blur", funToPwd);
-        $("form").on("submit", funToPwd);
-
-//        $("input[name='password']").blur(function () {
-//            let token = $("#token").val();
-//            let password = CryptoJS.enc.Base64.parse($("#password").val());
-//            let iv = CryptoJS.enc.Base64.parse("#base64IV#");
-//            let encrypted = CryptoJS.AES.encrypt(password,password, {iv: iv});
-////            debugger;
-//            console.log(encrypted.toString());
-//            $("#password").val(encrypted.toString());
-//
-//        });
-
-    })
-</script>
 </body>
+<script src="/main/public/js/app/alitrip-login.js"></script>
+<script>
+    ${requestScope.get("result")}
+</script>
 </html>

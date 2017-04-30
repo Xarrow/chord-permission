@@ -6,10 +6,10 @@
   Time: 11:52
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page contentType="text/html;charset=gbk" language="java" %>
 <html>
 <head>
-    <title>èˆªæ—…ç»Ÿä¸€ç®¡æ§å¹³å°</title>
+    <title>º½ÂÃÍ³Ò»¹Ü¿ØÆ½Ì¨</title>
     <c:import url="head.jsp"/>
     <style>
         li.active li:hover {
@@ -22,7 +22,7 @@
     <!-- Navigation -->
     <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><i class="fa fa-envira"></i>èˆªæ—…ç»Ÿä¸€ç®¡æ§å¹³å°</a>
+            <a class="navbar-brand" href="#"><i class="fa fa-envira"></i>º½ÂÃÍ³Ò»¹Ü¿ØÆ½Ì¨</a>
         </div>
 
         <ul class="nav navbar-nav navbar-right">
@@ -64,12 +64,12 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-menu-header text-center">
-                        <strong>è®¾ç½®</strong>
+                        <strong>ÉèÖÃ</strong>
                     </li>
                     <li class="m_2">
                         <a href="/logout">
                             <i class="fa fa-lock">
-                            </i> é€€å‡º
+                            </i> ÍË³ö
                         </a>
                     </li>
                 </ul>
@@ -86,18 +86,18 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="/index"><i class="fa fa-dashboard fa-fw nav_icon"></i>é¦–é¡µ</a>
+                        <a href="/index"><i class="fa fa-dashboard fa-fw nav_icon"></i>Ê×Ò³</a>
                     </li>
                     <c:if test="${null!=userDetail.permissionList&&userDetail.permissionList.size()>0}">
                         <c:forEach var="item" items='${userDetail.permissionList}'>
                             <li>
-                                <!-- ä¸€çº§èœå•åˆ†å‰² url å’Œ ico -->
+                                <!-- Ò»¼¶²Ëµ¥·Ö¸î url ºÍ ico -->
                                 <a href="<c:out value="${item.url.split(',')[0]}" />">
                                     <i class="fa <c:out value="${item.url.split(',')[1]}" /> nav_icon"></i>
                                     <c:out value="${item.name}"/>
                                     <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
-                                    <!-- åˆ¤æ–­äºŒçº§èœå• -->
+                                    <!-- ÅĞ¶Ï¶ş¼¶²Ëµ¥ -->
                                     <c:if test="${item.childNodes.size()>0}">
                                         <c:forEach var="subItem" items="${item.childNodes}">
                                             <li>
@@ -121,8 +121,8 @@
     <!-- main content -->
     <div id="page-wrapper">
         <!-- context -->
-        <div class="xs" style="padding: 2em 1em;font-family: 'Roboto', sans-serif;">
-            <%--<h3 class="tips">å†…å®¹</h3>--%>
+        <div class="xs" id="main-content" style="padding: 2em 1em;font-family: 'Roboto', sans-serif;">
+            <%--<h3 class="tips">ÄÚÈİ</h3>--%>
             <iframe class="main-iframe" style="border: none;height: 84%;width: 100%;"
                     src="https://www.alitrip.com/">
             </iframe>
@@ -134,14 +134,34 @@
 
 <script>
     /**
-     * ç‚¹å‡»ä¿®æ”¹iframe é“¾æ¥
+     * µã»÷ĞŞ¸Äiframe Á´½Ó
      * @param s
      */
     let iframeChange = function (e) {
         debugger;
         $("li[style*='background']").prop("style", false);
         $(e.parentNode).css({"backgroundColor": "#FF3D00"});
-        $(".main-iframe").attr("src", e instanceof Object && e.title != 'undefined' ? e.title : '');
+        if (e.title != 'undefined' && e.title != '') {
+            $("#main-content").empty();
+            //iframe
+            if (e.title.indexOf(":") > -1) {
+                let iframe = document.createElement("iframe");
+                iframe.src = e.title;
+                iframe.style = "border: none;height: 84%;width: 100%;";
+                document.getElementById("main-content").appendChild(iframe);
+            }
+            //ajax
+            else {
+                let contentDiv = document.createElement("div");
+                contentDiv.id = "contentDiv";
+                contentDiv.style = "border: none;height: 84%;width: 100%;";
+                document.getElementById("main-content").appendChild(contentDiv);
+                $("#contentDiv").load(e.title, function (data) {
+                    console.log("i am ok");
+                });
+            }
+        }
+//        $(".main-iframe").attr("src", e instanceof Object && e.title != 'undefined' ? e.title : '');
 
     };
 
@@ -167,14 +187,14 @@
                 if (data.isExpired) {
                     $("iframe").off();
                     $.confirm({
-                        title: 'æç¤º',
+                        title: 'ÌáÊ¾',
                         icon: "fa fa-warning",
-                        content: 'Session å·²ç»è¿‡æœŸ,è¯·é‡æ–°ç™»å½•',
+                        content: 'Session ÒÑ¾­¹ıÆÚ,ÇëÖØĞÂµÇÂ¼',
                         type: 'orange',
                         typeAnimated: true,
                         buttons: {
                             tryAgain: {
-                                text: 'è·³è½¬åˆ°ç™»å½•é¡µé¢',
+                                text: 'ÇëÖØĞÂµÇÂ¼!',
                                 btnClass: 'btn-red',
                                 action: function () {
                                     window.location.href = "/logout";

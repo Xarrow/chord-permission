@@ -38,7 +38,7 @@ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.spri
         <!--<property name="realm" ref="shiroDbRealm"/>-->
         <property name="realms">
             <list>
-                <bean id="myRealm" class="shiro.ShiroDbRealm"/>
+                <bean id="myRealm" class="com.alibaba.chord.service.base.shiro.ShiroDbRealm"/>
                 <!--<bean id="apiRealm" class=""/>-->
             </list>
         </property>
@@ -72,11 +72,5 @@ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.spri
         <property name="sessionValidationInterval" value="1800000"/>
     </bean>
 
-
-    <!--开启shiro注解-->
-    <aop:config proxy-target-class="true"/>
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-        <property name="securityManager" ref="securityManager"/>
-    </bean>
 
 </beans>

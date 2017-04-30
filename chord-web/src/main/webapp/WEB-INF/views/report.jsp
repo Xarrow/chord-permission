@@ -6,13 +6,13 @@
   Time: 19:14
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=gbk" language="java" %>
 <html>
 <head>
-    <title>鎶ヨ〃</title>
+    <title>报表</title>
 </head>
 <body>
-<h1>鎶ヨ〃鍐呭</h1>
+<h1>报表内容</h1>
 <m:auth privilege="7">
     <a href="Dmlks">Auth test</a>
 </m:auth>

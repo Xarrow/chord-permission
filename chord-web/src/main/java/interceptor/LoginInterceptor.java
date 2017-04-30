@@ -1,10 +1,10 @@
 package interceptor;
 
-import java.util.Base64;
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -22,20 +22,25 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             String userKey = httpServletRequest.getParameter("userKey");
             //String aesPassword = httpServletRequest.getParameter("password");
-            String password = org.apache.shiro.codec.Base64.decodeToString(httpServletRequest.getParameter("password")).split("->")[1];
+            String password = org.apache.shiro.codec.Base64.decodeToString(httpServletRequest.getParameter("password"))
+                .split("->")[1];
             String reqToken = httpServletRequest.getParameter("token");
-            //瀹㈡埛绔湪娌℃湁sessionId鐨勬儏鍐典笅浼氫骇鐢烴P
+            //客户端在没有sessionId的情况下会产生NP
             Object sessionTokenObject = httpServletRequest.getSession().getAttribute("token");
-            if (null == reqToken ||
+            if (StringUtils.isBlank(reqToken) ||
                 null == sessionTokenObject ||
                 !reqToken.equals(sessionTokenObject.toString())) {
                 httpServletResponse.sendRedirect("/login");
                 return false;
             }
-            if (null == userKey || null == password) {
+            if (StringUtils.isBlank(userKey)) {
                 return false;
             }
-            //aes瑙ｅ瘑
+            if (StringUtils.isBlank(password)) {
+                return false;
+            }
+
+            //aes解密
             //String password = EncipherUtil.aesDecryptByToken(aesPassword, reqToken.substring(0, 16));
 
             //shiro
@@ -43,7 +48,10 @@ public class LoginInterceptor implements HandlerInterceptor {
             UsernamePasswordToken token = new UsernamePasswordToken(userKey, password);
             subject.login(token);
         } catch (AuthenticationException e) {
-            httpServletResponse.sendRedirect("/login");
+            RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/login");
+            String resultString = "$.alert({'title':'提示','content': '账号或者密码错误!'})";
+            httpServletRequest.setAttribute("result", resultString);
+            dispatcher.forward(httpServletRequest, httpServletResponse);
             return false;
         }
         return true;
