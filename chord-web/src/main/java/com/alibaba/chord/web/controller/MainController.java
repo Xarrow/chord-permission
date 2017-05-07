@@ -1,21 +1,19 @@
 package com.alibaba.chord.web.controller;
 
 import java.util.Map;
-
 import javax.annotation.Resource;
-
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.alibaba.chord.service.base.service.UserService;
 
 /**
  * Created by wb-zj268791 on 2017/3/29.
  */
 @Controller
-@RequestMapping("/")
 public class MainController {
 
     @Resource
@@ -47,7 +45,7 @@ public class MainController {
     @RequestMapping("login")
     public String login() {
         if (SecurityUtils.getSubject().isAuthenticated()) {
-            return "redirect: /index";
+            return "redirect:/index";
         } else {
             return "login";
         }
@@ -64,14 +62,14 @@ public class MainController {
         String userKey = SecurityUtils.getSubject().getPrincipal().toString();
         userService.logOut(userKey);
         SecurityUtils.getSubject().logout();
-        return "redirect: /login";
+        return "redirect:/login";
 
     }
 
     @RequestMapping(value = "doLogin", method = RequestMethod.POST)
     public String doLogin() {
         if (SecurityUtils.getSubject().isAuthenticated()) {
-            return "redirect: /index";
+            return "redirect:/index";
         } else {
             return "login";
         }
@@ -87,9 +85,8 @@ public class MainController {
         return "uafWatch";
     }
 
-
     @RequestMapping("testShiro")
-    public String testShiro(Model model){
+    public String testShiro(Model model) {
         return "test";
     }
 

@@ -19,8 +19,8 @@ public class ResponseUtil {
         return buildVoByResultCode(success, resultCode, null);
     }
 
-    public static <T> ResponseVO buildVoBySuccessResult(Boolean success, T data) {
-        return buildVoByResultCode(success, ResultCode.SUCCESS, data);
+    public static <T> ResponseVO buildVoBySuccessResult(T data) {
+        return buildVoByResultCode(true, ResultCode.SUCCESS, data);
     }
 
     public static <T> ResponseVO buildVoByResultCode(

@@ -22,6 +22,7 @@ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.spri
                 /doLogin = anon
                 /unauthorized = anon
                 /test/** = anon
+                /nexus/** = anon
                 <!--/api/** = roles[sale]-->
                 <!--/api/** = roles[dev:flush]-->
                 /index = authc
