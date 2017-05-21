@@ -8,6 +8,7 @@
     <!--<bean id="simpleKeyGenerator" class="org.springframework.cache.com.alibaba.chord.interceptor.SimpleKeyGenerator"/>-->
     <!--启用缓存注解 注解方式配置@EnableCaching-->
     <cache:annotation-driven cache-manager="simpleCacheManager" proxy-target-class="true"/>
+
     <!-- 使用SimpleCacheManager 缓存管理器-->
     <bean id="simpleCacheManager"
           class="org.springframework.cache.support.SimpleCacheManager">
@@ -17,6 +18,12 @@
                 <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
                     <property name="name" value="permission-cache"/>
                 </bean>
+
+                <bean class="com.alibaba.chord.utils.JianCacheBean">
+                    <property name="name" value="stduent_query_cache"/>
+                    <property name="expired" value="10"/>
+                </bean>
+
             </set>
         </property>
     </bean>

@@ -19,6 +19,10 @@ public class ResponseUtil {
         return buildVoByResultCode(success, resultCode, null);
     }
 
+    public static <T> ResponseVO buildVoByFailResult(T data) {
+        return buildVoByResultCode(false, ResultCode.FAILED, data);
+    }
+
     public static <T> ResponseVO buildVoBySuccessResult(T data) {
         return buildVoByResultCode(true, ResultCode.SUCCESS, data);
     }
@@ -26,7 +30,7 @@ public class ResponseUtil {
     public static <T> ResponseVO buildVoByResultCode(
         boolean success, ResultCode resultCode, T data) {
 
-        ResponseVO<Object> vo = new ResponseVO<Object>();
+        ResponseVO vo = new ResponseVO();
         if (data instanceof Map) {
             vo.setData(data);
         } else if (data instanceof List) {
@@ -41,8 +45,6 @@ public class ResponseUtil {
     }
 
     /**
-     * List×ªMap¶ÔÏó
-     *
      * @param list
      * @return
      */

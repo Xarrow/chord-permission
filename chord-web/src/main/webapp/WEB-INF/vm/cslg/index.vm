@@ -1,0 +1,37 @@
+<div class="wrapper" style="padding: 20px;height: 90%">
+    <div class="main" style="width: 95%;background-color: rgb(254, 254, 254);margin: 20px">
+        <div class="header" style="background-color: rgb(41, 122, 216); height: auto; min-height: 33px;">
+            <div class="fb_headerInfo" style="padding-top:0px">
+                <div class="h_headline" style="text-align:center;color:#FFFFFF;">
+                    <h1>学生数据查询</h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="main_content" class="doc-chapter">
+            <div class="mdui-textfield">
+                <input class="mdui-textfield-input" type="text" placeholder="输入学号"/>
+                <button id="search" class="mdui-btn mdui-ripple mdui-color-blue">
+                    查询
+                </button>
+            </div>
+        </div>
+
+        <pre id="code">
+
+        </pre>
+
+    </div>
+</div>
+
+<script>
+    var searchApi = "/api/cslg/xh/get/";
+    $("#search").click(function () {
+        var xh = $("input[class='mdui-textfield-input']").val();
+        $("#code").load(searchApi + xh, function (data) {
+
+
+        })
+    })
+
+</script>

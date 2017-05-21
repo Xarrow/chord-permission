@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     private RoleService roleService;
 
     /**
-     * µÇÂ¼ÑéÖ¤ userKey ºÍ md(password+salt)
+     * ç™»å½•éªŒè¯ userKey å’Œ md(password+salt)
      *
      * @param user
      * @return
@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void logOut(String userKey) {
-        //¸Éµô»º´æ
+        //å¹²æ‰ç¼“å­˜
         Cache cache = cacheManager.getCache(CommonsValue.CACHE_NAME);
         if (null != cache.get(userKey)) {
             cache.evict(userKey);
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * Í¨¹ıĞÕÃû²éÑ¯ÏêÏ¸ĞÅÏ¢2
+     * é€šè¿‡å§“åæŸ¥è¯¢è¯¦ç»†ä¿¡æ¯2
      *
      * @param userKey
      * @return
@@ -92,11 +92,11 @@ public class UserServiceImpl implements UserService {
     public JSONObject findUserDetailByUserKey(String userKey) {
         JSONObject jsonObject = new JSONObject();
         List<PermissionResDto> parentPermissionResDtoList = new ArrayList<>();
-        //²éÑ¯ËùÓĞµÄ½ÇÉ«
+        //æŸ¥è¯¢æ‰€æœ‰çš„è§’è‰²
         Set<String> roleNameSet = roleService.findRoleNameByUserKey(userKey);
-        //²éÑ¯ËùÓĞÈ¨ÏŞÂë
+        //æŸ¥è¯¢æ‰€æœ‰æƒé™ç 
         Set<String> permissionSet = permissionService.findPermissionByUserKey(userKey);
-        //È«²¿È¨ÏŞÂë
+        //å…¨éƒ¨æƒé™ç 
         Set<String> permissionSetTmp = new HashSet<>();
         permissionSetTmp.addAll(permissionSet);
 
@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService {
         Iterator<String> iterator = permissionSet.iterator();
         while (iterator.hasNext()) {
             Permission permission = permissionMapper.selectByPrimaryKey(Integer.valueOf(iterator.next()));
-            //ÏÈ²éÑ¯¸¸½Úµã
+            //å…ˆæŸ¥è¯¢çˆ¶èŠ‚ç‚¹
             if (permission.getNode().equals(0)) {
                 PermissionResDto permissionResDto = new PermissionResDto();
                 BeanUtils.copyProperties(permission, permissionResDto);
@@ -114,7 +114,7 @@ public class UserServiceImpl implements UserService {
                 iterator.remove();
             }
         }
-        //¶ş¼¶²Ëµ¥µÄnodeÖµºÍ¸¸½ÚµãidÏàÆ¥Åä
+        //äºŒçº§èœå•çš„nodeå€¼å’Œçˆ¶èŠ‚ç‚¹idç›¸åŒ¹é…
         for (PermissionResDto permissionResDto : parentPermissionResDtoList) {
             List<Permission> permissionList = new ArrayList<>();
             for (String s : permissionSet) {
@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
             }
             permissionResDto.setChildNodes(permissionList);
         }
-        //ÕâÀï´æ·Å¶ş¼¶²Ëµ¥È¨ÏŞÂë£¬¶ø²»ÊÇÒ»¼¶²Ëµ¥È¨ÏŞÂë
+        //è¿™é‡Œå­˜æ”¾äºŒçº§èœå•æƒé™ç ï¼Œè€Œä¸æ˜¯ä¸€çº§èœå•æƒé™ç 
         jsonObject.put("permissionSet", permissionSetTmp);
         jsonObject.put("roleNameSet", roleNameSet);
         jsonObject.put("permissionList", parentPermissionResDtoList);

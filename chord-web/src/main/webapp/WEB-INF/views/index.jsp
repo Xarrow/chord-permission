@@ -12,11 +12,9 @@
     <title>WEIBO VM</title>
     <style>
         body {
-            background-image: url(http://cdn1.mikecrm.com/images/formTemplate/101_bg.png);
-            background-position: center center;
-            background-repeat: repeat;
             overflow-y: hidden;
-            background-color: rgb(245, 245, 245);
+            background: rgb(245, 245, 245) url(http://cdn1.mikecrm.com/images/formTemplate/101_bg.png)
+            repeat center center;
         }
     </style>
 </head>

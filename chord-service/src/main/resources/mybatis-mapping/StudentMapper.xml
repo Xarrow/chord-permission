@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.chord.service.student.dao.StudentBaseInfoDAO">
+    <resultMap id="BaseResultMap" type="com.alibaba.chord.service.student.model.StudentBaseInfoModel">
+        <result column="XH" property="xh" jdbcType="VARCHAR"/>
+        <result column="XM" property="xm" jdbcType="VARCHAR"/>
+        <result column="XMPY" property="xmpy" jdbcType="VARCHAR"/>
+        <result column="CYM" property="cym" jdbcType="VARCHAR"/>
+        <result column="SFZH" property="sfzh" jdbcType="VARCHAR"/>
+        <result column="CSRQ" property="csrq" jdbcType="VARCHAR"/>
+        <result column="XB" property="xb" jdbcType="VARCHAR"/>
+        <result column="JG" property="jg" jdbcType="VARCHAR"/>
+        <result column="CSD" property="csd" jdbcType="VARCHAR"/>
+        <result column="MZ" property="mz" jdbcType="VARCHAR"/>
+        <result column="ZZMM" property="zzmm" jdbcType="VARCHAR"/>
+        <result column="ZSPC" property="zspc" jdbcType="VARCHAR"/>
+        <result column="XSLB" property="xslb" jdbcType="VARCHAR"/>
+        <result column="LYS" property="lys" jdbcType="VARCHAR"/>
+        <result column="RXRQ" property="rxrq" jdbcType="VARCHAR"/>
+        <result column="YXSH" property="yxsh" jdbcType="VARCHAR"/>
+        <result column="XZ" property="xz" jdbcType="VARCHAR"/>
+        <result column="BH" property="bh" jdbcType="VARCHAR"/>
+        <result column="ZYDM" property="zydm" jdbcType="VARCHAR"/>
+        <result column="GRLXDH" property="grlxdh" jdbcType="VARCHAR"/>
+        <result column="GRDZXX" property="grdzxx" jdbcType="VARCHAR"/>
+        <result column="SFZDS" property="sfzds" jdbcType="VARCHAR"/>
+        <result column="SSH" property="ssh" jdbcType="VARCHAR"/>
+        <result column="TC" property="tc" jdbcType="VARCHAR"/>
+        <result column="ZP" property="zp" jdbcType="BLOB" javaType="_byte[]"/>
+        <result column="JTZZ" property="jtzz" jdbcType="VARCHAR"/>
+        <result column="JTGH" property="jtgh" jdbcType="VARCHAR"/>
+        <result column="TXDZ" property="txdz" jdbcType="VARCHAR"/>
+        <result column="JTYZBM" property="jtyzbm" jdbcType="VARCHAR"/>
+        <result column="DLMM" property="dlmm" jdbcType="VARCHAR"/>
+        <result column="ROLEID" property="roleid" jdbcType="VARCHAR"/>
+        <result column="BZ" property="bz" jdbcType="VARCHAR"/>
+        <result column="EDITZT" property="editzt" jdbcType="VARCHAR"/>
+        <result column="JLSJ" property="jlsj" jdbcType="VARCHAR"/>
+        <result column="WeiXinID" property="weixinid" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        XH, XM, XMPY, CYM, SFZH, CSRQ, XB, JG, CSD, MZ, ZZMM, ZSPC, XSLB, LYS, RXRQ, YXSH,
+        XZ, BH, ZYDM, GRLXDH, GRDZXX, SFZDS, SSH, TC,ZP, JTZZ, JTGH, TXDZ, JTYZBM, DLMM, ROLEID,
+        BZ, EDITZT, JLSJ, WeiXinID
+    </sql>
+
+    <!-- 根据id 来查询  -->
+    <select id="selectByXH" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from student_base_info
+        where XH = #{_key}
+    </select>
+
+    <select id="selectByXm" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from student_base_info
+        where XM = #{xm,jdbcType=VARCHAR}
+    </select>
+</mapper>

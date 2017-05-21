@@ -6,4 +6,5 @@ package com.alibaba.chord.commons;
 public class CommonsValue {
     public static final String CACHE_NAME = "permission-cache";
 
+    public static final String STU_QUERY_CACHENAME = "stduent_query_cache";
 }

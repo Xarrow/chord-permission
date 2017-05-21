@@ -22,9 +22,20 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://www.springfr
         validation via @Valid and message body marshalling with @RequestBody/ResponseBody
     -->
     <mvc:annotation-driven/>
-    <!--<context:annotation-config/>-->
-    <!--springmvc 自容器扫描controller-->
-    <context:component-scan base-package="com.alibaba.chord.web.controller"/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.alibaba.chord.controller"/>
+
+    <bean id="propertyPlaceholderConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <!--datasource数据源文件配置-->
+                <value>classpath:*.properties</value>
+
+            </list>
+        </property>
+    </bean>
+
 
     <!--静态资源 设置缓存-->
     <mvc:default-servlet-handler/>
@@ -41,21 +52,24 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://www.springfr
     <mvn:resources mapping="/main/public/fonts/**" location="/public/fonts/">
         <mvc:cache-control max-age="3600" cache-public="true"/>
     </mvn:resources>
-
+    <mvn:resources mapping="/main/public/icons/**" location="/public/icons/">
+        <mvc:cache-control max-age="3600" cache-public="true"/>
+    </mvn:resources>
 
     <!--spring 拦截器-->
     <mvc:interceptors>
         <!--生成token-->
         <mvc:interceptor>
             <mvc:mapping path="/login"/>
-            <bean id="tokenInterceptor" class="interceptor.TokenInterceptor"/>
+            <bean id="tokenInterceptor" class="com.alibaba.chord.interceptor.TokenInterceptor"/>
         </mvc:interceptor>
 
         <!--登录拦截-->
         <mvc:interceptor>
             <mvc:mapping path="/doLogin"/>
-            <bean id="loginInterceptor" class="interceptor.LoginInterceptor"/>
+            <bean id="loginInterceptor" class="com.alibaba.chord.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
+
     </mvc:interceptors>
 
     <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->

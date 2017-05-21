@@ -14,26 +14,7 @@
     <sql id="Base_Column_List">
         id, node, name, url, type, add_time, update_time, mark
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from permission
-        where id = #{id,jdbcType=INTEGER}
-    </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        DELETE FROM permission
-        WHERE id = #{id,jdbcType=INTEGER}
-    </delete>
-
-    <insert id="insert" parameterType="com.alibaba.chord.service.base.model.Permission">
-        insert into permission (id, node, name,
-        url, type, add_time,
-        update_time, mark)
-        values (#{id,jdbcType=INTEGER}, #{node,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
-        #{url,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP},
-        #{updateTime,jdbcType=TIMESTAMP}, #{mark,jdbcType=INTEGER})
-    </insert>
 
     <insert id="insertSelective" parameterType="com.alibaba.chord.service.base.model.Permission">
         insert into permission
@@ -91,43 +72,4 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.alibaba.chord.service.base.model.Permission">
-        update permission
-        <set>
-            <if test="node != null">
-                node = #{node,jdbcType=INTEGER},
-            </if>
-            <if test="name != null">
-                name = #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="url != null">
-                url = #{url,jdbcType=VARCHAR},
-            </if>
-            <if test="type != null">
-                type = #{type,jdbcType=VARCHAR},
-            </if>
-            <if test="addTime != null">
-                add_time = #{addTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="updateTime != null">
-                update_time = #{updateTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="mark != null">
-                mark = #{mark,jdbcType=INTEGER},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-
-    <update id="updateByPrimaryKey" parameterType="com.alibaba.chord.service.base.model.Permission">
-        update permission
-        set node = #{node,jdbcType=INTEGER},
-        name = #{name,jdbcType=VARCHAR},
-        url = #{url,jdbcType=VARCHAR},
-        type = #{type,jdbcType=VARCHAR},
-        add_time = #{addTime,jdbcType=TIMESTAMP},
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-        mark = #{mark,jdbcType=INTEGER}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
 </mapper>
