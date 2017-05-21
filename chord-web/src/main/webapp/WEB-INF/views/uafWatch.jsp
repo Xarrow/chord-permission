@@ -6,10 +6,10 @@
   Time: 19:01
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=gbk" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <html>
 <body>
-<c:import url="index.jsp"/>
+<c:import url="index1.jsp"/>
 <!-- main content -->
 <div id="page-wrapper">
     <div class="graphs">

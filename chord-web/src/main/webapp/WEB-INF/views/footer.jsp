@@ -5,7 +5,7 @@
   Time: 22:00
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=gbk" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <html>
 
 <body>
@@ -13,8 +13,8 @@
 <div class="copy_layout footer">
     <p>Copyright 2017.Company name All rights reserved.
         Collect
-        from <a href="#" title="网页模板" target="_blank">网页模板</a></p>
-    <p>为了获得最佳体验，请使用最新版本的 Google Chrome、Firefox、Safari</p>
+        from <a href="#" title="缃戦〉妯℃澘" target="_blank">缃戦〉妯℃澘</a></p>
+    <p>涓轰簡鑾峰緱鏈�浣充綋楠岋紝璇蜂娇鐢ㄦ渶鏂扮増鏈殑 Google Chrome銆丗irefox銆丼afari</p>
 </div>
 </body>
 </html>

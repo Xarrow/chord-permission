@@ -40,7 +40,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
     private CacheManager cacheManager;
 
     /**
-     * ÊÚÈ¨
+     * æˆæƒ
      *
      * @param principalCollection
      * @return
@@ -71,9 +71,9 @@ public class ShiroDbRealm extends AuthorizingRealm {
                 return info;
             }
             String userKey = principal.toString();
-            //½ÇÉ«Ãû
+            //è§’è‰²å
             Set<String> roles = roleService.findRoleNameByUserKey(userKey);
-            //È¨ÏŞÂë
+            //æƒé™ç 
             Set<String> permissions = permissionService.findPermissionByUserKey(userKey);
             if (null == roles || roles.isEmpty()) {
                 return info;
@@ -89,7 +89,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
     }
 
     /**
-     * µÇÂ¼
+     * ç™»å½•
      *
      * @param authenticationToken
      * @return

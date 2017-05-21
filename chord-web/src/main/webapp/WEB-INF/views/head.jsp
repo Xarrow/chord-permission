@@ -5,12 +5,12 @@
   Time: 11:39
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=gbk" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- css 部分 -->
+    <!-- css 閮ㄥ垎 -->
     <!-- Bootstrap Core CSS -->
     <link href="/main/public/css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
     <!-- Custom CSS -->
@@ -21,7 +21,7 @@
     <%--<link href="/main/public/css/font-awesome.css" rel="stylesheet">--%>
     <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 
-    <!-- js 部分 -->
+    <!-- js 閮ㄥ垎 -->
     <%--<script src="/main/public/js/require-js/require.js"--%>
     <%--data-main="/main/public/js/main.js">--%>
     <%--</script>--%>

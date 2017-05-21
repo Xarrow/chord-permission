@@ -7,7 +7,7 @@
   Time: 20:34
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=gbk" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <html>
 
 
@@ -59,7 +59,7 @@
 
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>²Ëµ¥¹ÜÀí</h1>
+        <h1>èœå•ç®¡ç†</h1>
         <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar
             work.
             It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>

@@ -5,7 +5,7 @@
 
 
     <!--key 值生成规则-->
-    <!--<bean id="simpleKeyGenerator" class="org.springframework.cache.interceptor.SimpleKeyGenerator"/>-->
+    <!--<bean id="simpleKeyGenerator" class="org.springframework.cache.com.alibaba.chord.interceptor.SimpleKeyGenerator"/>-->
     <!--启用缓存注解 注解方式配置@EnableCaching-->
     <cache:annotation-driven cache-manager="simpleCacheManager" proxy-target-class="true"/>
     <!-- 使用SimpleCacheManager 缓存管理器-->

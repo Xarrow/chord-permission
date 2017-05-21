@@ -6,7 +6,7 @@
   Time: 22:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=gbk" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <html>
 <head>
     <title>500 SERVER ERROR</title>

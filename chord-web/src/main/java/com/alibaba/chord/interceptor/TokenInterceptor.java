@@ -1,4 +1,4 @@
-package interceptor;
+package com.alibaba.chord.interceptor;
 
 import java.util.UUID;
 

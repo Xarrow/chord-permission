@@ -1,4 +1,4 @@
-package interceptor;
+package com.alibaba.chord.interceptor;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +25,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             String password = org.apache.shiro.codec.Base64.decodeToString(httpServletRequest.getParameter("password"))
                 .split("->")[1];
             String reqToken = httpServletRequest.getParameter("token");
-            //¿Í»§¶ËÔÚÃ»ÓĞsessionIdµÄÇé¿öÏÂ»á²úÉúNP
             Object sessionTokenObject = httpServletRequest.getSession().getAttribute("token");
             if (StringUtils.isBlank(reqToken) ||
                 null == sessionTokenObject ||
@@ -40,7 +39,6 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return false;
             }
 
-            //aes½âÃÜ
             //String password = EncipherUtil.aesDecryptByToken(aesPassword, reqToken.substring(0, 16));
 
             //shiro
@@ -49,7 +47,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             subject.login(token);
         } catch (AuthenticationException e) {
             RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/login");
-            String resultString = "$.alert({'title':'ÌáÊ¾','content': 'ÕËºÅ»òÕßÃÜÂë´íÎó!'})";
+            String resultString = "$.alert({'title':'è¿”å›ç»“æœ','content': 'è´¦å·æˆ–è€…å¯†ç é”™è¯¯'})";
             httpServletRequest.setAttribute("result", resultString);
             dispatcher.forward(httpServletRequest, httpServletResponse);
             return false;

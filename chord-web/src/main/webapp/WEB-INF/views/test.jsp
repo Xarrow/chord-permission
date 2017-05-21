@@ -8,41 +8,41 @@
   Time: 11:31
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=gbk" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
 
-<h1>²âÊÔ</h1>
+<h1>æµ‹è¯•</h1>
 
 <hr>
 <shiro:hasRole name="dev">
-    ¿ª·¢Õß
+    å¼€å‘è€…
 </shiro:hasRole>
 
 <hr>
 <shiro:hasRole name="admin">
-    ¹ÜÀíÔ±
+    ç®¡ç†å‘˜
 </shiro:hasRole>
 <hr>
 <shiro:hasPermission name="1">
-    ¿ª·¢Õßview
+    å¼€å‘è€…view
 </shiro:hasPermission>
 
 <hr>
 <shiro:authenticated>
-    ÒÑ¾­ÑéÖ¤
+    å·²ç»éªŒè¯
 </shiro:authenticated>
 <hr>
 <shiro:hasPermission name="dev:2">
-    ¿ª·¢Õßcheck
+    å¼€å‘è€…check
 </shiro:hasPermission>
 
 <hr>
 <shiro:notAuthenticated>
-    »¹Ã»ÓÐÑéÖ¤
+    è¿˜æ²¡æœ‰éªŒè¯
 </shiro:notAuthenticated>
 
 <auth:auth privilege="7">

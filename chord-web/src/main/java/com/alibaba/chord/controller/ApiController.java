@@ -1,4 +1,4 @@
-package com.alibaba.chord.web.controller;
+package com.alibaba.chord.controller;
 
 import javax.annotation.Resource;
 
@@ -24,7 +24,7 @@ import com.alibaba.chord.service.base.service.UserService;
  * Created by wb-zj268791 on 2017/3/29.
  */
 @RestController
-@RequestMapping("api")
+@RequestMapping("auth/api")
 public class ApiController {
 
     @Resource
