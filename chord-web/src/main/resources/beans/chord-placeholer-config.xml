@@ -11,7 +11,7 @@ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
             <list>
                 <!--datasource数据源文件配置-->
                 <value>classpath:placeHolder.properties</value>
-                <value>classpath:weibo_api_config.properties</value>
+                <!--<value>classpath:weibo_api_config.properties</value>-->
             </list>
         </property>
     </bean>

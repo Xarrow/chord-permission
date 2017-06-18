@@ -42,19 +42,22 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://www.springfr
         <mvc:cache-control max-age="3600" cache-public="true"/>
     </mvn:resources>
 
+    <mvn:resources mapping="/main/public/icons/**" location="/public/icons/">
+        <mvc:cache-control max-age="3600" cache-public="true"/>
+    </mvn:resources>
 
     <!--spring 拦截器-->
     <mvc:interceptors>
         <!--生成token-->
         <mvc:interceptor>
             <mvc:mapping path="/login"/>
-            <bean id="tokenInterceptor" class="interceptor.TokenInterceptor"/>
+            <bean id="tokenInterceptor" class="com.alibaba.chord.interceptor.TokenInterceptor"/>
         </mvc:interceptor>
 
         <!--登录拦截-->
         <mvc:interceptor>
             <mvc:mapping path="/doLogin"/>
-            <bean id="loginInterceptor" class="interceptor.LoginInterceptor"/>
+            <bean id="loginInterceptor" class="com.alibaba.chord.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
