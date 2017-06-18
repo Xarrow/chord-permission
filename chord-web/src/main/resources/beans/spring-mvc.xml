@@ -24,7 +24,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://www.springfr
     <mvc:annotation-driven/>
     <!--<context:annotation-config/>-->
     <!--springmvc 自容器扫描controller-->
-    <context:component-scan base-package="com.alibaba.chord.web.controller"/>
+    <context:component-scan base-package="com.alibaba.chord.controller"/>
 
     <!--静态资源 设置缓存-->
     <mvc:default-servlet-handler/>

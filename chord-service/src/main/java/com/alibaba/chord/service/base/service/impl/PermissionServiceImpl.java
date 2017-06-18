@@ -24,7 +24,7 @@ public class PermissionServiceImpl implements PermissionService {
     private RoleService roleService;
 
     /**
-     * ¸ù¾İuserKey »ñÈ¡ÓÃ»§È«²¿È¨ÏŞÂë
+     * æ ¹æ®userKey è·å–ç”¨æˆ·å…¨éƒ¨æƒé™ç 
      *
      * @param userKey
      * @return

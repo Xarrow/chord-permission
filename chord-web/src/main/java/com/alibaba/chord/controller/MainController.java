@@ -1,4 +1,4 @@
-package com.alibaba.chord.web.controller;
+package com.alibaba.chord.controller;
 
 import java.util.Map;
 import javax.annotation.Resource;

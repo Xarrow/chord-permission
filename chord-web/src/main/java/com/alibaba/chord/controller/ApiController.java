@@ -54,7 +54,6 @@ public class ApiController {
         return jsonObject;
     }
 
-    @RequiresRoles("sale")
     @RequestMapping(value = "showAllCache")
     public ResponseVO showAllCache() {
         ResponseVO responseVO = ResponseUtil.buildVoByResultCode(false, ResultCode.API_CONNECT_FAILED);
