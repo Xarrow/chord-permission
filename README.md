@@ -2,11 +2,8 @@
 SpingMVC集成Shiro基本框架
 
 
-[+] 流程图
-
+**1.流程图**
 ![img](screenshot/系统登陆-退出流程图.jpg)
 
-[+] 参考链接
-[基于SpringMVC+Shiro的系统权限开发](http://iliangqunru.com/post/2016/ji-yu-springmvc-shirode-xi-tong-quan-xian-kai-fa)
-
-[+] 20170501 修改架构
+**2.参考链接**
+[基于SpringMVC+Shiro的系统权限开发](https://iliangqunru.bitcron.com/post/2017/ji-yu-springmvc-shirode-xi-tong-quan-xian-kai-fa)
